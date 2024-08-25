@@ -7,4 +7,10 @@ async function onClick() {
   document.body.innerText = catName;
 }
 
-document.querySelector('.center-button')?.addEventListener('click', onClick);
+class RevealButton extends HTMLElement {
+  connectedCallback() {
+    this.querySelector('button')?.addEventListener('click', onClick);
+  }
+}
+
+customElements.define('reveal-button', RevealButton);
