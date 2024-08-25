@@ -12,9 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
-    "@types/jquery": "^3.5.30",
     "astro": "^4.14.5",
-    "jquery": "^3.7.1",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
