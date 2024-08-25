@@ -1,5 +1,6 @@
 ---
 import { getCatNames } from '../utils/catData';
+import RevealButton from '../components/RevealButton';
 
 const catNames = await getCatNames();
 ---
@@ -23,13 +24,12 @@ const catNames = await getCatNames();
         transform: translate(-50%, -50%);
         padding: 10px 20px;
         font-size: 16px;
-        cursor: pointer;
       }
     </style>
     <section class="center">
-      <reveal-button cats={catNames}><button>Reveal</button></reveal-button>
-      <reveal-button cats={['Secret', ...catNames]}
-        ><button>Reveal</button></reveal-button
+      <RevealButton client:load cats={catNames}>Reveal</RevealButton>
+      <RevealButton client:load cats={['Secret', ...catNames]}
+        >Reveal</RevealButton
       >
     </section>
   </body>
