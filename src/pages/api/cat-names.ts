@@ -1,9 +1,8 @@
 import type { APIRoute } from 'astro';
+import { getCatNames } from '../../utils/catData';
 
-const catNames = ['Alonzo', 'Bill Bailey', 'Bombalurina', 'Electra', 'Plato'];
-
-export const GET: APIRoute = () => {
-  return new Response(JSON.stringify({ catNames }), {
+export const GET: APIRoute = async () => {
+  return new Response(JSON.stringify(await getCatNames()), {
     status: 200,
     headers: {
       'Content-Type': 'application/json',

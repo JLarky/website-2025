@@ -1,5 +1,7 @@
 ---
+import { getCatNames } from '../utils/catData';
 
+const catNames = await getCatNames();
 ---
 
 <html lang="en">
@@ -25,8 +27,10 @@
       }
     </style>
     <section class="center">
-      <reveal-button><button>Reveal</button></reveal-button>
-      <reveal-button><button>Reveal</button></reveal-button>
+      <reveal-button cats={catNames}><button>Reveal</button></reveal-button>
+      <reveal-button cats={['Secret', ...catNames]}
+        ><button>Reveal</button></reveal-button
+      >
     </section>
   </body>
 </html>

@@ -1,15 +1,17 @@
 class RevealButton extends HTMLElement {
-  onClick = async () => {
-    const response = await fetch('/api/cat-names');
-    const json = await response.json();
-    const { catNames } = json;
+  onClick = () => {
+    const catNames = (this.getAttribute('cats') ?? '').split(',');
     const index = Math.floor(Math.random() * catNames.length);
     const catName = catNames[index];
-    this.innerText = catName;
-  }
+    this.innerText = catName ?? '';
+  };
 
   connectedCallback() {
-    this.querySelector('button')?.addEventListener('click', this.onClick);
+    const btn = this.querySelector('button');
+    if (btn) {
+      btn.addEventListener('click', this.onClick);
+      btn.innerText = `Reveal one of the ${this.getAttribute('cats')?.split(',').length} cat names`;
+    }
   }
 }
 
