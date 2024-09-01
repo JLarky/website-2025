@@ -1,4 +1,6 @@
 import { defineElement } from '@jlarky/solid-wc';
+import { createEffect } from 'solid-js';
+import { insert } from 'solid-js/web';
 
 defineElement('reveal-button', { cats: '' }, ({ element, props }) => {
   const onClick = () => {
@@ -10,7 +12,12 @@ defineElement('reveal-button', { cats: '' }, ({ element, props }) => {
   const btn = element.querySelector('button');
   if (btn) {
     btn.addEventListener('click', onClick);
-    btn.innerText = `Reveal one of the ${props.cats?.split(',').length} cat names`;
+    createEffect(() => {
+      insert(
+        btn,
+        `Reveal one of the ${props.cats?.split(',').length} cat names`
+      );
+    });
   }
   return null;
 });
