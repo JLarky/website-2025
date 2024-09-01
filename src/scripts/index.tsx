@@ -1,7 +1,7 @@
 import { defineElement } from '@jlarky/solid-wc';
 
-defineElement('reveal-button', { cats: '' }, ({ element }) => {
-  element.textContent = '';
+defineElement('reveal-button', { cats: '' }, ({ element, setRenderRoot }) => {
+  setRenderRoot(element.attachShadow({ mode: 'open' }));
   return (props) => {
     const onClick = () => {
       const catNames = props.cats.split(',');
