@@ -1,18 +1,16 @@
-class RevealButton extends HTMLElement {
-  onClick = () => {
-    const catNames = (this.getAttribute('cats') ?? '').split(',');
+import { defineElement } from '@jlarky/solid-wc';
+
+defineElement('reveal-button', {}, ({ element }) => {
+  const onClick = () => {
+    const catNames = (element.getAttribute('cats') ?? '').split(',');
     const index = Math.floor(Math.random() * catNames.length);
     const catName = catNames[index];
-    this.innerText = catName ?? '';
+    element.innerText = catName ?? '';
   };
-
-  connectedCallback() {
-    const btn = this.querySelector('button');
-    if (btn) {
-      btn.addEventListener('click', this.onClick);
-      btn.innerText = `Reveal one of the ${this.getAttribute('cats')?.split(',').length} cat names`;
-    }
+  const btn = element.querySelector('button');
+  if (btn) {
+    btn.addEventListener('click', onClick);
+    btn.innerText = `Reveal one of the ${element.getAttribute('cats')?.split(',').length} cat names`;
   }
-}
-
-customElements.define('reveal-button', RevealButton);
+  return null;
+});
