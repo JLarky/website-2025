@@ -1,6 +1,8 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     "jsx": "preserve",
     "jsxImportSource": "solid-js"
   }

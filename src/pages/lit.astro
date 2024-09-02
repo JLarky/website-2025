@@ -1,5 +1,7 @@
 ---
+import { getCatNames } from '../utils/catData';
 
+const catNames = await getCatNames();
 ---
 
 <html lang="en">
@@ -12,7 +14,7 @@
   </head>
   <body>
     <h1>Website 2025</h1>
-    <script src="../scripts/index.tsx"></script>
+    <script src="../scripts/lit.ts"></script>
     <style>
       .center {
         position: absolute;
