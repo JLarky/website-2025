@@ -1,5 +1,10 @@
 ---
+import { element } from '../scripts';
 
+const html = element.renderToString({
+  renderId: 'test',
+  includeHydrationScript: true,
+});
 ---
 
 <html lang="en">
@@ -23,8 +28,6 @@
         font-size: 16px;
       }
     </style>
-    <section class="center">
-      <reveal-button><button>Reveal</button></reveal-button>
-    </section>
+    <section class="center" set:html={html} />
   </body>
 </html>

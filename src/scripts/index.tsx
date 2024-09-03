@@ -1,8 +1,9 @@
-import { defineElement } from '@jlarky/solid-wc';
+import { defineElementSSR } from '@jlarky/solid-wc';
 
 import RevealButton from '../components/RevealButton';
 
-defineElement('reveal-button', { cats: '' }, ({ element, setRenderRoot }) => {
-  setRenderRoot(element.attachShadow({ mode: 'open' }));
-  return (props) => <RevealButton cats={props.cats.split(',')} />;
-});
+export const element = defineElementSSR('reveal-button', RevealButton);
+
+if (import.meta.env.SSR === false) {
+  element.register();
+}
