@@ -1,4 +1,4 @@
-export const getCatNames = async () => [
+export const getCatNames = () => [
   'Alonzo',
   'Bill Bailey',
   'Bombalurina',
